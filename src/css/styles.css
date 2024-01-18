@@ -24,14 +24,26 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.gallery {
+.timer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  list-style-type: none;
+  gap: 20px;
 }
 
-.gallery-item {
-  
-  width: calc((100% - 160px) / 3);
+.field {
+  display: flex;
+  flex-direction: column;
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.value {
+  font-size: 40px;
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: 700;
 }
