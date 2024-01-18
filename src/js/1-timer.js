@@ -5,6 +5,7 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const startButton = document.querySelector('[data-start]');
 
+
 const datetimePicker = flatpickr("#datetime-picker", {
   enableTime: true,
   time_24hr: true,
@@ -25,19 +26,24 @@ const datetimePicker = flatpickr("#datetime-picker", {
   },
 });
 
+
+
 let countdownInterval;
 
-function startCountdown(endTime) {
+function startCountdown(countdownEndTime) {
   countdownInterval = setInterval(() => {
     const currentTime = new Date().getTime();
-    const timeDifference = endTime - currentTime;
+    const timeDifference = countdownEndTime - currentTime;
 
     if (timeDifference <= 0) {
       clearInterval(countdownInterval);
       alert('Countdown Finished');
       updateInterface(0);
+      
     } else {
       updateInterface(timeDifference);
+      
+      document.getElementById('datetime-picker').disabled = true;
     }
   }, 1000);
 }
@@ -73,8 +79,9 @@ startButton.disabled = true;
 
 startButton.addEventListener('click', () => {
   const selectedDate = datetimePicker.selectedDates[0];
-  const endTime = selectedDate.getTime();
+  const countdownEndTime = selectedDate.getTime();
 
   startButton.disabled = true; 
-  startCountdown(endTime);
+  
+  startCountdown(countdownEndTime);
 });
