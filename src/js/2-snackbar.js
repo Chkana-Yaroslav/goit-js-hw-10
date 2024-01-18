@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     
     const delay = parseInt(document.querySelector('[name="delay"]').value);
-    const state = document.querySelector('[name="state"]:checked').value;
+    const status = document.querySelector('[name="state"]:checked').value;
 
     
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (state === 'fulfilled') {
+        if (status === 'fulfilled') {
           resolve(delay);
         } else {
           reject(delay);
