@@ -3,6 +3,9 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 const startButton = document.querySelector('[data-start]');
 
 
@@ -18,7 +21,11 @@ const datetimePicker = flatpickr("#datetime-picker", {
     const selectedTime = selectedDate.getTime();
 
     if (selectedTime <= currentTime) {
-      alert('Please choose a date in the future');
+      // alert('Please choose a date in the future');
+      iziToast.success({
+        message: `Please choose a date in the future`,
+      });
+
       startButton.disabled = true;
     } else {
       startButton.disabled = false;
@@ -37,7 +44,11 @@ function startCountdown(countdownEndTime) {
 
     if (timeDifference <= 0) {
       clearInterval(countdownInterval);
-      alert('Countdown Finished');
+      // alert('Countdown Finished');
+      iziToast.success({
+        message: `Countdown Finished`,
+      });
+
       updateInterface(0);
       
     } else {
